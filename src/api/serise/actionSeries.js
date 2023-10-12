@@ -6,7 +6,7 @@ import axios from "axios";
 export const fetchAsyncSeries = (data) => {
     return (dispatch) => {
       dispatch(fetchAsyncSeriesInit());
-      const baseUrl = "http://www.omdbapi.com";
+      const baseUrl = "https://www.omdbapi.com";
       let APIkey = "5cea0b7c";
       let seriesName = "game";
   

@@ -5,7 +5,7 @@ import axios from "axios";
 export const fetchSelect = (id) => {
   return (dispatch) => {
     dispatch(fetchAsyncSelectInit());
-    const baseUrl = "http://www.omdbapi.com";
+    const baseUrl = "https://www.omdbapi.com";
     let APIkey = "5cea0b7c";
     
 
