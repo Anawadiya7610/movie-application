@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./MovieListing.css";
 // import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ function MovieListing(props) {
   useEffect(() => {
     dispatch(fetchAsyncMovies());
     dispatch(fetchAsyncSeries());
-  }, []);
+  }, [dispatch]);
 
   // console.log(movies);
   let resultMovie = movies.moviePage.moviesData;
