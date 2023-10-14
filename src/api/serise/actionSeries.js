@@ -15,7 +15,7 @@ export const fetchAsyncSeries = (data) => {
         .then((response) => {
           if (response !== undefined) {
             dispatch(fetchAsyncSeriesSuccess(response.data));
-            console.warn("data:--", response.data);
+            // console.warn("data:--", response.data);
           }
         })
         .catch(function (error) {

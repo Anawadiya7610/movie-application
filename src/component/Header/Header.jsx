@@ -8,7 +8,7 @@ function Header() {
   const [hourdata, setHour] = useState(0);
   const [minutedata, setMinute] = useState(0);
   const [seconddata, setSecond] = useState(0);
-  const[ampm, setAmPm] = useState("am");
+  const [ampm, setAmPm] = useState("am");
 
   const timeUpdate = () => {
     let time = moment().format();
@@ -19,7 +19,7 @@ function Header() {
 
     setMinute(minutes);
     setSecond(seconds);
-    
+
     if (hour > 12) {
       hour = hour - 12;
       setAmPm("pm");
@@ -27,18 +27,20 @@ function Header() {
     }
   };
 
-   setInterval(timeUpdate,1000);
+  setInterval(timeUpdate, 1000);
 
   return (
     <div className="header">
       <Link to="/">
-        <div className="logo">Movie App</div>
+        <div className="logo">Magic-Movie</div>
       </Link>
-      <div className="user_image">
-        <img src={Logo} alt="userImg" />
-      </div>
-      <div className="time" style={{ color: "white" }}>
-        {hourdata}:{minutedata}:{seconddata} {ampm}
+      <div className="img_prant" >
+        <div className="user_image">
+          <img src={Logo} alt="userImg" />
+        </div>
+        <div className="time" style={{ color: "white" }}>
+          {hourdata}:{minutedata}:{seconddata} {ampm}
+        </div>
       </div>
     </div>
   );

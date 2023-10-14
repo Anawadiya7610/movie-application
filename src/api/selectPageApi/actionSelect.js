@@ -14,7 +14,6 @@ export const fetchSelect = (id) => {
       .then((response) => {
         if (response !== undefined) {
           dispatch(fetchAsyncSelectSuccess(response.data));
-          // console.warn("data:--", response.data);
         }
       })
       .catch(function (error) {

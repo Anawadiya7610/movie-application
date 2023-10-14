@@ -1,27 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./MovieListing.css";
-// import { Link } from "react-router-dom";
 import MovieCard from "../Movie/MovieCard";
 import { fetchAsyncMovies } from "../../api/movieApi/Action";
 import { fetchAsyncSeries } from "../../api/serise/actionSeries";
-function MovieListing(props) {
-  let movies = useSelector((state) => state);
 
+
+
+function MovieListing() {
+  let movies = useSelector((state) => state);
   const dispatch = useDispatch();
+  const [movesData, setMoviesData] = useState(false);
+  const [seriseData, setSeriseData] = useState(false);
+
+
   useEffect(() => {
     dispatch(fetchAsyncMovies());
     dispatch(fetchAsyncSeries());
   }, [dispatch]);
 
-  // console.log(movies);
-  let resultMovie = movies.moviePage.moviesData;
-  let resultSeries = movies.seriesPage.seriesData;
-  // console.log(resultSeries);
-  // console.log(resultMovie);
+  let resultMovie = movies && movies.moviePage && movies.moviePage.moviesData;
+  let resultSeries = movies && movies.seriesPage && movies.seriesPage.seriesData;
 
-  if (resultMovie !== null && resultMovie !== undefined) {
-    // console.log(resultMovie.Response);
+  useEffect(() => {
+    if (resultMovie && resultMovie) {
+      setMoviesData(true);
+    }
+    if (resultSeries && resultSeries) {
+      setSeriseData(true);
+    }
+  }, [movies])
+
+  if (resultMovie && resultMovie) {
     let renderMovise,
       renderShow = "";
     renderMovise =
@@ -35,8 +45,8 @@ function MovieListing(props) {
         </div>
       );
 
-    if (resultSeries !== null && resultSeries !== undefined) {
-      // console.log(resultSeries.Response);
+    if (resultSeries && resultSeries) {
+
 
       renderShow =
         resultSeries.Response === "True" ? (
@@ -49,17 +59,31 @@ function MovieListing(props) {
           </div>
         );
 
+
+
+
+
+
       return (
         <div className="movie_wrapper">
-          <div className="movie-list">
-            <h2 className="card-info">Movies</h2>
-            <div className="movie-container">{renderMovise}</div>
-          </div>
-          <div className="series-list">
-            <h2 className="card-info">Shows</h2>
-            <div className="movie-container">{renderShow}</div>
-          </div>
-        </div>
+          {movesData ? (
+            <div className="movie-list">
+              <h2 className="card-info">Movies</h2>
+              <div className="movie-container">{renderMovise}</div>
+            </div>
+          ) : (<div className="movie-list">
+            <h1 > Loading...</h1>
+          </div>)}
+          {seriseData ? (
+            <div className="series-list">
+              <h2 className="card-info">Shows</h2>
+              <div className="movie-container">{renderShow}</div>
+            </div>
+          ) : (<div className="series-list">
+            <h1>
+              Loading...</h1></div>)
+          }
+        </div >
       );
     }
   }

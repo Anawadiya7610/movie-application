@@ -1,5 +1,4 @@
 import { React } from "react";
-import "./Home.css";
 import MovieListing from "../MovieListing/MovieListing";
 
 function Home() {
