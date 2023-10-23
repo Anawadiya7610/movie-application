@@ -16,8 +16,7 @@ function MovieDetail() {
   useEffect(() => {
     setImdbUpdate(false);
     dispatch(fetchSelect(imdbID));
-
-  }, [imdbID]);
+  },[imdbID,dispatch]);
 
  
 
@@ -28,7 +27,7 @@ function MovieDetail() {
         setImdbUpdate(true);
       }
     }
-  }, [selectData])
+  },[selectData,imdbID])
 
   let DetailPage = () => {
 
