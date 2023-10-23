@@ -25,10 +25,8 @@ function MovieDetail() {
     if (selectData && selectData.imdbID) {
       let value = selectData && selectData.imdbID;
       if (imdbID === value) {
-        console.log("print data aaaaaaaaaaaaaaaaaa");
         setImdbUpdate(true);
       }
-
     }
   }, [selectData])
 
