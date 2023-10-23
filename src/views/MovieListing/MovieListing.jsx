@@ -29,7 +29,7 @@ function MovieListing() {
     if (resultSeries && resultSeries) {
       setSeriseData(true);
     }
-  }, [movies])
+  }, [resultMovie,resultSeries])
 
   if (resultMovie && resultMovie) {
     let renderMovise,
